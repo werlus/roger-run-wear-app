@@ -15,6 +15,8 @@ export default function Home() {
         console.error(error);
       });
   }, []);
+
+  console.log(weatherData)
   
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
@@ -25,7 +27,6 @@ export default function Home() {
         </p>
       </div>
       <div>
-        {weatherData.weather}
       </div>
     </main>
   )
