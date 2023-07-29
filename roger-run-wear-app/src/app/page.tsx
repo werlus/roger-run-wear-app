@@ -1,6 +1,7 @@
+"use client"; // this is a client component
 import Image from 'next/image'
 import axios from 'axios'
-import React, { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 
 export default function Home() {
   const [posts, setPosts] = useState([]);
@@ -26,10 +27,10 @@ export default function Home() {
 
       <div>
         <ul>
-        {posts.map(post => (
-          <li key={post.id}>{post.title}</li>
-        ))}
-      </ul>
+          {posts.map(post => (
+            <li key={post.id}>{post.title}</li>
+          ))}
+        </ul>
       </div>
     </main>
   )
