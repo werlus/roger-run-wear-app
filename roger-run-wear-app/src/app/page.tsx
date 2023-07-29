@@ -1,6 +1,20 @@
 import Image from 'next/image'
+import axios from 'axios'
+import React, { useState, useEffect } from 'react'
 
 export default function Home() {
+  const [posts, setPosts] = useState([]);
+
+  useEffect(() => {
+    axios.get('https://jsonplaceholder.typicode.com/posts')
+      .then(response => {
+        setPosts(response.data);
+      })
+      .catch(error => {
+        console.error(error);
+      });
+  }, []);
+  
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
       <div className="z-10 w-full max-w-5xl items-center justify-between font-mono text-sm lg:flex">
@@ -10,7 +24,13 @@ export default function Home() {
         </p>
       </div>
 
-      <div></div>
+      <div>
+        <ul>
+        {posts.map(post => (
+          <li key={post.id}>{post.title}</li>
+        ))}
+      </ul>
+      </div>
     </main>
   )
 }
