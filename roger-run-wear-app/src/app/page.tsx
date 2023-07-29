@@ -4,12 +4,12 @@ import axios from 'axios'
 import { useState, useEffect } from 'react'
 
 export default function Home() {
-  const [posts, setPosts] = useState([]);
+  const [weatherData, setWeatherData] = useState([]);
 
   useEffect(() => {
-    axios.get('https://jsonplaceholder.typicode.com/posts')
+    axios.get('https://api.openweathermap.org/data/2.5/weather?lat=40.44&lon=-79.99&appid=44799e9520761c6e3e5f6c6ed0981881')
       .then(response => {
-        setPosts(response.data);
+        setWeatherData(response.data);
       })
       .catch(error => {
         console.error(error);
@@ -24,13 +24,8 @@ export default function Home() {
           <code className="font-mono font-bold">src/app/page.tsx</code>
         </p>
       </div>
-
       <div>
-        <ul>
-          {posts.map(post => (
-            <li key={post.id}>{post.title}</li>
-          ))}
-        </ul>
+        {weatherData.weather}
       </div>
     </main>
   )
