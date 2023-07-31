@@ -4,7 +4,7 @@ import axios from 'axios'
 import { useState, useEffect } from 'react'
 
 export default function Home() {
-  const [weatherData, setWeatherData] = useState([]);
+  const [weatherData, setWeatherData] = useState<any>([]);
 
   useEffect(() => {
     axios.get(`https://api.openweathermap.org/data/2.5/weather?lat=40.44&lon=-79.99&appid=${process.env.openWeather}`)
