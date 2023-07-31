@@ -7,8 +7,8 @@ export default function Home() {
   const [weatherData, setWeatherData] = useState([]);
 
   useEffect(() => {
-    axios.get('https://api.openweathermap.org/data/2.5/weather?lat=40.44&lon=-79.99&appid=44799e9520761c6e3e5f6c6ed0981881')
-      .then(response => {
+    axios.get(`https://api.openweathermap.org/data/2.5/weather?lat=40.44&lon=-79.99&appid=${process.env.openWeather}`)
+      .then(response => { 
         setWeatherData(response.data);
       })
       .catch(error => {
@@ -27,6 +27,9 @@ export default function Home() {
         </p>
       </div>
       <div>
+        <h1>{weatherData.name}</h1>
+        <h1>{weatherData.main.temp}</h1>
+        <h1>{weatherData.weather[0].description}</h1>
       </div>
     </main>
   )
