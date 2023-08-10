@@ -5,9 +5,12 @@ import { useState, useEffect } from 'react'
 
 export default function Home() {
   const [weatherData, setWeatherData] = useState<any>();
+  const [lat, setLat] = useState<string>('40.44');
+  const [long, setLong] = useState<string>('-79.99');
+  const weatherApiURL = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&appid=${process.env.openWeather}`;
 
   useEffect(() => {
-    axios.get(`https://api.openweathermap.org/data/2.5/weather?lat=40.44&lon=-79.99&appid=${process.env.openWeather}`)
+    axios.get(weatherApiURL)
       .then(response => { 
         setWeatherData(response.data);
       })
