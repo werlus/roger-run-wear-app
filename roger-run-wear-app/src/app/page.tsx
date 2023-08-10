@@ -12,7 +12,9 @@ export default function Home() {
   useEffect(() => {
     axios.get(weatherApiURL)
       .then(response => { 
-        setWeatherData(response.data);
+        setWeatherData({
+          temperature: response.data.main.temp
+        });
       })
       .catch(error => {
         console.error(error);
@@ -30,7 +32,7 @@ export default function Home() {
         </p>
       </div>
       <div>
-        
+        {weatherData.temperature}
       </div>
     </main>
   )
